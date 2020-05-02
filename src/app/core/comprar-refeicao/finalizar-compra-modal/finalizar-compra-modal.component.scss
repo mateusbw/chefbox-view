@@ -1,0 +1,9 @@
+.resumo-valor{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+  border-bottom: 1px dashed green;
+  span{
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,36 @@
+.img-container {
+  overflow: hidden;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+}
+.prato-descricao {
+  font-size: 14px;
+  color: #fbe5bb;
+}
+.banner {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.banner.img-right {
+  background-image: url("../../../assets/imgs/ingredientes-bg1.png");
+  background-position: right;
+}
+.banner.img-left {
+  background-image: url("../../../assets/imgs/ingredientes-bg2.png");
+  background-position: left;
+}
+
+@media (max-width: 600px) {
+  .banner.img-right,
+  .banner.img-left {
+    background-image: none;
+  }
+  .img-container {
+    height: 210px;
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+}

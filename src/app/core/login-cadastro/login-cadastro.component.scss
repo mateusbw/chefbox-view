@@ -1,0 +1,22 @@
+.bg-ingredientes {
+  background-image: url("../../../assets/imgs/bg-sides.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 100%;
+  min-height: calc(100vh - 66px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .border-login {
+    border-right: 1.5px solid gray;
+  }
+}
+@media (max-width: 600px) {
+  .border-login {
+    border-bottom: 1.5px solid gray;
+  }
+}

@@ -1,0 +1,9 @@
+
+.test-efeito{
+    animation: mymove 2s;
+}
+
+@keyframes mymove {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+  }

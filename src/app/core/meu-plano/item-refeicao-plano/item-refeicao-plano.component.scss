@@ -1,0 +1,47 @@
+@import "../../../../styles.scss";
+
+.meal-item {
+  padding: 1rem;
+  border: 1px solid $primary;
+  margin: 1rem 0;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 7px 1px #00000038;
+  }
+  .title {
+    color: $primary;
+    margin-bottom: 1rem;
+  }
+  .img-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .meal-title {
+    color: $primary;
+  }
+  .meal-description {
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+}
+
+.meal-item.selected {
+  background-color: $primary;
+  .title {
+    color: white;
+  }
+  .meal-title {
+    color: white;
+  }
+  .meal-description {
+    color: #fbe5bb;
+  }
+}

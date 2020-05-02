@@ -1,0 +1,8 @@
+<div [class]="'meal-item ' + (isSelected? 'selected':'')" (click)="selectRefeicao()">
+    <h5 class="title">{{refeicao.dia}}</h5>
+    <div class="img-container">
+        <img [src]="refeicao.imgUrl">
+    </div>
+    <h6 class="meal-title">{{refeicao.titulo}}</h6>
+    <p class="meal-description">{{refeicao.descricao}}</p>
+</div>

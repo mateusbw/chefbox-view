@@ -1,0 +1,19 @@
+<div [class]="'meal-item '+ (refeicao.disponivel? '':'unavailable') + (isSelected? 'selected':'')"
+  (click)="selectRefeicao()">
+  <div>
+    <h5 class="title">{{refeicao.dia}}</h5>
+    <div class="img-container">
+      <img [src]="refeicao.prato.imageUrl">
+    </div>
+  </div>
+  <div>
+    <h6 class="meal-title">{{refeicao.prato.titulo}}</h6>
+    <p class="meal-description">{{refeicao.prato.descricao}}</p>
+    <a class="font-weight-bold" *ngIf="refeicao.disponivel" click-stop-propagation [href]="refeicao.prato.linkReceita" target="_blank">Detalhes</a>
+  </div>
+  <div class="mt-2 d-flex justify-content-between" *ngIf="refeicao.disponivel">
+    <span class="badge-secondary">{{refeicao.valorTotal | currency: 'BRL'}}</span>
+    <app-adicionar-pessoas-badge (addEvent)="add()" (subEvent)="sub()"></app-adicionar-pessoas-badge>
+  </div>
+  <span class="unavailable-badge" *ngIf="!refeicao.disponivel">Não disponível</span>
+</div>

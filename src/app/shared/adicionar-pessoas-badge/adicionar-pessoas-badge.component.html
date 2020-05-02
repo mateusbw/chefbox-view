@@ -1,0 +1,8 @@
+<div class="adicionar-person-badge">
+    <button class="btn btn-clear" (click)="add()" click-stop-propagation>+</button>
+    <span class="num-people">
+        {{number}}
+        <img src="assets/icons/person-icon.svg" width="15px">
+    </span>
+    <button class="btn btn-clear" click-stop-propagation (click)="sub()">-</button>
+</div>

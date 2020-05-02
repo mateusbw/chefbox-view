@@ -1,0 +1,62 @@
+<app-navbar [logedin]=true></app-navbar>
+<div class="my-5 container px-5 text-center">
+    <h1 class="text-primary">Meu plano</h1>
+    <p class="mt-3" style="font-size: 18px;">Confira abaixo o cardápio da semana. Suas refeições estão pré-selecionadas
+        de acordo com seu plano e as preferências do seu cadastro.
+        Caso queria fazer alguma alteração no dia de receber sua box, você pode fazer isso desmarcando/selecionando as refeições abaixo com até 24h horas de antecedência.
+    </p>
+    <h6 class="mt-4">{{qtdRefeicoesSelecionadas}}/{{qtdRefeicoes}}</h6>
+    <div class="row">
+        <div class="col-md-6 border-right">
+            <h4 class="text-primary">Cardápio da semana</h4>
+            <div class="row">
+                <ng-container *ngFor="let ref of refeicoesOpcao">
+                    <div class="col-md-6" *ngIf="showRefCardapio(ref.id)">
+                        <app-item-refeicao-plano [refeicao]="ref" (selecionarPrato)="selecionarPrato($event)">
+                        </app-item-refeicao-plano>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-primary">Minhas Escolhas</h4>
+            <div class="row">
+                <ng-container *ngFor="let ref of refeicoesOpcao">
+                    <div class="col-md-6" *ngIf="showRefSelecionado(ref.id)">
+                        <app-item-refeicao-plano [refeicao]="ref" isSelected="true"
+                            (selecionarPrato)="removerPrato($event)"></app-item-refeicao-plano>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 row">
+        <div class="col-md-6">
+            <div class="card text-left">
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                    <h5 class="text-primary mb-0">Meu Plano Semanal</h5>
+                    <button class="btn btn-secondary btn-rounded">Alterar plano</button>
+                </div>
+                <span> <span class="text-secondary">Quantidade de refeições:</span> 2 (quarta-feira,
+                    quinta-feira)</span>
+                <hr>
+                <span> <span class="text-secondary">Para quantas pessoas:</span> 3</span>
+                <hr>
+                <span> <span class="text-secondary">Restrições alimentares:</span> alergia a frutos do mar</span>
+                <hr>
+                <span> <span class="text-secondary">Horário de entrega:</span> 16:00 ás 18:00</span>
+                <hr>
+                <h6> <span class="text-secondary font-weight-bold">Valor do Plano:</span> R$75,00</h6>
+            </div>
+        </div>
+        <div class="col-md-6 text-left">
+            <div class="card" style="height: auto;">
+                <span class="text-primary">Quer comprar alguma refeição avulsa além do contratado no seu plano? Faça
+                    isso clicando aqui</span>
+                <button class="mt-4 btn btn-secondary btn-rounded align-self-start" routerLink="/comprar-refeicao-avulsa">Comprar refeição avulsa</button>
+            </div>
+            <h6 class="text-primary">Precisando de ajuda?</h6>
+            <h6 style="text-transform: none;">Entre em contato pelas nossas redes sociais.</h6>
+        </div>
+    </div>
+</div>

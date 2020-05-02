@@ -1,0 +1,50 @@
+@import "../../../styles.scss";
+.input-group {
+  margin-top: 1rem;
+
+  .input-group-text {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: white;
+    border-color: $primary;
+    border-right: none;
+    padding: 0 1rem;
+    color: $primary;
+  }
+
+  .form-control {
+    border-radius: 100px;
+    border-color: $primary;
+    border-left: none;
+    color: #707070;
+    &::placeholder {
+      color: $primary;
+      opacity: 0.6;
+      font-weight: bold;
+    }
+  }
+  &.error {
+    .form-control,
+    .input-group-text {
+      border-color: #a42619;
+      color: #a42619;
+      &::placeholder {
+        color: #a42619;
+      }
+    }
+  }
+  &.sucess {
+    .form-control,
+    .input-group-text {
+      border-color: #4d9c40;
+      color: #4d9c40;
+      &::placeholder {
+        color: #4d9c40;
+      }
+    }
+  }
+}
+.errorMessage {
+  color: #a42619;
+  font-size: 12px;
+}

@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+
+<section class="banner img-right">
+  <div class="col-md-5 px-5 text-center">
+    <h1 class="text-primary mb-4"> Seja um Chef!</h1>
+    <p class="mb-5 ">Somos um serviço de assinatura de refeições.
+      Durante o mês de maio você poderá ter um gostinho da Experiência Chef Box!
+      A cada semana lançaremos um cardapio novo, você poderá comprar quantas refeições quiser e
+      receber em casa todos os ingredientes
+      separados e prontos para uso, junto com a
+      receita e passo a passo para prepará-los. A partir de Junho iniciaremos com os planos de assinatura!</p>
+    <button class="btn btn-secondary px-4 my-2" routerLink="/comprar-refeicao-avulsa">Quero
+      Experimentar</button>
+    <!-- <button class="btn btn-secondary my-2">Montar meu plano</button> -->
+  </div>
+  <div class="d-none d-md-inline col-md-7 text-center">
+    <img src="assets/imgs/prato-1.png" width="60%">
+  </div>
+</section>
+<section class="bg-primary p-5 text-center text-white">
+  <h2>Por que Chef Box?</h2>
+  <div class="mt-5 d-flex flex-wrap justify-content-around align-items-center">
+    <div class="col-md-2 text-center">
+      <img src="assets/imgs/box.svg" width="100px">
+      <p class=" text-white mt-4">Sem mais quebrar a cabeça com o que cozinhar, nosso Box faz isso por você.</p>
+    </div>
+    <div class="col-md-2 text-center">
+      <img src="assets/imgs/ingredientes.svg" width="100px">
+      <p class="text-white mt-4">Trabalhamos com ingredientes frescos e selecionados.</p>
+    </div>
+    <div class="col-md-2 text-center">
+      <img src="assets/imgs/clock.svg" width="100px">
+      <p class="text-white mt-4">Economize tempo evitando viagens longas e tediosas ao mercado.</p>
+    </div>
+    <div class="col-md-2 text-center">
+      <img src="assets/imgs/balanca.svg" width="100px">
+      <p class="text-white mt-4">Ingredientes na medida certa. Chega de despedícios.</p>
+    </div>
+  </div>
+  <a class="mt-5 btn btn-outline-light px-5" routerLink="/comprar-refeicao-avulsa">Iniciar</a>
+</section>
+<section class="banner img-left">
+  <div class="col-md-6 text-center d-none d-md-inline">
+    <img src="assets/imgs/prato-2.png" width="70%">
+  </div>
+  <div class="col-md-6 text-center">
+    <h1 class="text-primary mb-4"> Comer bem em casa <br>
+      nunca foi tão fácil!</h1>
+    <p class="mb-5 ">
+      Chegou a hora de ter a certeza que comer bem casa nunca foi tão fácil! <br>
+      Com o Chef Box Experience você pode comprar quantas refeições desejar,
+      <br>e receber em casa os ingredientes frescos junto com receita
+      <br> e passo a passo de como prepará-los!</p>
+    <button class="btn btn-secondary px-4 my-2" routerLink="/comprar-refeicao-avulsa">Experimentar</button>
+    <!-- <button class="btn btn-secondary my-2">Montar meu plano</button> -->
+  </div>
+</section>
+<section class="bg-primary p-5 text-center text-white">
+  <h2>Cardápio da semana</h2>
+  <div class="mt-4 d-flex flex-wrap">
+    <div class="col-md-2 my-2" *ngFor="let prato of cardapioSemana">
+      <h5>{{prato.dia | date: 'EEEE':"+0300"}}</h5>
+      <div class="img-container">
+        <img [src]="prato.imageUrl" width="100%">
+      </div>
+      <h6 class="mt-3">{{prato.titulo}}</h6>
+      <span class="prato-descricao">{{prato.descricao}}</span>
+    </div>
+  </div>
+</section>
+<footer class="p-3 bg-ternary">
+  <span style="color: white; font-size: 14px;">© Chef Box 2020</span>
+</footer>

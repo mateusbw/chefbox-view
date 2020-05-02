@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="mt-5 container text-center">
+  <h1 class="text-primary">Chef Box Experience</h1>
+  <p class="mt-4" style="font-size: 22px;">Tenha um gostinho da experiência de ser assinante Chef Box! <br>
+    Escolha quantas refeição quiser > Marque para quantas pessoas > Finalize sua compra</p>
+  <!-- <span class="text-secondary font-weight-bold mr-3" style="font-size: 18px;">É assinante?</span><button
+        class="btn btn-secondary">VEJA SEU PLANO</button> -->
+  <div class="mt-5 row">
+    <div class="col-md-8 row">
+      <div class="col-md-4" *ngFor="let item of refeicoesSemana">
+        <app-item-refeicao [refeicao]="item" (selecionarPrato)="selecionarPrato($event)"
+          (removerPrato)="removerPrato($event)" (atualizarValor)="atualizarValor($event)"></app-item-refeicao>
+      </div>
+    </div>
+    <div class="col-md-4 px-5">
+      <div class="card flex-column">
+        <h5 class="text-primary">
+          <img src="assets/icons/cart-icon.svg" width="30px">
+          Minha compra</h5>
+        <div class="text-left flex-fill">
+          <ng-container *ngFor="let refeicao of compra.refeicoes; let i=index">
+            <span><span class="text-secondary ">{{i+1}}.</span> {{refeicao.prato.titulo}}</span>
+            <br>
+            <span class="text-lowercase text-secondary ">{{refeicao.dia}}</span>
+            <br>
+            <span class="text-secondary "> para {{refeicao.qtdPessoas}} pessoas</span>
+            <span class="badge-secondary float-right">{{refeicao.valorTotal | currency: 'BRL'}}</span>
+            <hr>
+          </ng-container>
+        </div>
+        <div class="text-right">
+          <span class="text-secondary ">Possui cupom de desconto?</span>
+          <div class="px-0 col-7 offset-5">
+            <app-input [form]="discountForm" inputName="codigo" icon="percent" placeholder="Informe aqui"
+              ></app-input>
+          </div>
+          <button class="btn btn-secondary btn-rounded mt-2 mb-3" style="font-size: 12px;" (click)="validarCupom()">Validar</button>
+          <div class="mb-3">
+            <span class="text-secondary mr-2">Já tenho uma box:</span>
+            <input type="checkbox" value="false" (change)="selecionarBox($event.target)">
+            <br>
+            <button class="btn btn-clear p-0 text-primary" style="text-transform: none;" (click)="openPoliticasBox()">Ver Políticas da Box</button>
+          </div>
+          <span class="text-secondary ">Subtotal:</span>
+          <span class=" text-gray">{{compra.subtotal | currency: 'BRL'}} </span>
+          <br>
+          <span class="text-secondary ">Desconto:</span>
+          <span class=" text-gray">{{compra.valorDesconto | currency: 'BRL'}}</span>
+          <br>
+          <span class="text-secondary ">Box:</span>
+          <span class=" text-gray" style="text-decoration: line-through;">{{compra.box | currency: 'BRL'}} </span>
+          <span class="text-primary">(GRÁTIS)</span>
+          <br>
+          <span class="text-secondary ">Entrega:</span>
+          <span class=" text-gray">{{compra.valorEntrega | currency: 'BRL'}}</span>
+          <br>
+          <span class="text-secondary ">Total:</span>
+          <span class=" text-gray">{{compra.total | currency: 'BRL'}}</span>
+          <br>
+          <button class="mt-3 px-4 btn btn-secondary btn-rounded" (click)="finalizarCompra()">Finalizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

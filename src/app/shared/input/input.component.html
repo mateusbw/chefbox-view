@@ -1,0 +1,18 @@
+<div [formGroup]="form" class="text-left">
+  <div [class]="'input-group '+ (isNotValid() ? 'error':'') + (isValid() ?'sucess': '')">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i [class]="'fa fa-'+icon"></i>
+      </div>
+    </div>
+    <ng-container [ngSwitch]="!!mask">
+      <input *ngSwitchCase="true" [type]="type" class="form-control" [id]="inputName+'Input'"
+        [formControlName]="inputName" [placeholder]="placeholder" [mask]="mask" />
+      <input *ngSwitchCase="false" [type]="type" class="form-control" [id]="inputName+'Input'"
+        [formControlName]="inputName" [placeholder]="placeholder" />
+    </ng-container>
+  </div>
+  <ng-container *ngFor="let validation of validationKeys">
+    <span class="errorMessage text-left" *ngIf="isNotValid()">{{validation|errorMessage}} <br></span>
+  </ng-container>
+</div>

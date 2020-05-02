@@ -1,0 +1,17 @@
+.loader-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.158);
+    z-index: 9999;
+    .loader{
+      background-color: white;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+}

@@ -1,0 +1,20 @@
+@import "../../../styles.scss";
+
+.adicionar-person-badge {
+  background-color: $primary;
+  border-radius: 100px;
+  padding: 0.25rem 0.5rem;
+  padding-bottom: 0;
+  border: 1px solid $primary;
+  .btn {
+    color: white;
+    padding: 0 0.25rem;
+  }
+  .num-people {
+    padding: 0.25rem 0.5rem;
+    background-color: white;
+    color: $primary;
+    font-weight: bold;
+    border-radius: 100px;
+  }
+}
