@@ -14,7 +14,7 @@ export class AdicionarPessoasBadgeComponent implements OnInit {
   ngOnInit(): void {}
 
   add() {
-    if (this.number <= 5) {
+    if (this.number < 5) {
       this.number++;
       this.addEvent.emit();
     }
