@@ -61,10 +61,10 @@
             <app-input [form]="compraForm" inputName="enderecoBarrio" icon="home" placeholder="Bairro"></app-input>
           </div>
           <div class="col-6">
-            <app-input [form]="compraForm" inputName="enderecoNumero" icon="home" placeholder="Número"></app-input>
+            <app-input [form]="compraForm" inputName="enderecoNumero" icon="home" placeholder="Número" mask="0*"></app-input>
           </div>
         </div>
-        <app-input [form]="compraForm" inputName="enderecoComplemento" icon="home" placeholder="Complemento">
+        <app-input [form]="compraForm" inputName="enderecoComplemento" icon="home" placeholder="Complemento/Referência">
         </app-input>
         <app-input [form]="compraForm" inputName="email" icon="envelope" placeholder="E-mail"></app-input>
         <app-input [form]="compraForm" inputName="telefone" icon="phone-alt" placeholder="Telefone (Whatsapp)"

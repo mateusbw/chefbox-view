@@ -7,6 +7,7 @@ import { ClienteService } from "./../../../shared/Client/cliente.service";
 import { PedidosService } from "./../../../shared/Client/pedidos.service";
 import { Router } from "@angular/router";
 import Swal, { SweetAlertType } from "sweetalert2";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-finalizar-compra-modal",
@@ -22,14 +23,15 @@ export class FinalizarCompraModalComponent implements OnInit {
     private viaCepService: ViaCepService,
     private clienteService: ClienteService,
     private pedidosService: PedidosService,
-    private router: Router
+    private router: Router,
+    private toastrServi: ToastrService
   ) {
     this.compraForm = this.fb.group({
       cpf: ["", [Validators.required, ValidateCpf]],
       nome: ["", [Validators.required]],
       enderecoCep: ["", [Validators.required]],
       enderecoLogradouro: ["", [Validators.required]],
-      enderecoComplemento: [""],
+      enderecoComplemento: ["", [Validators.required]],
       enderecoBarrio: ["", [Validators.required]],
       enderecoNumero: [""],
       email: ["", [Validators.required, Validators.email]],
@@ -47,13 +49,23 @@ export class FinalizarCompraModalComponent implements OnInit {
     this.viaCepService
       .getAdress(this.compraForm.get("enderecoCep").value)
       .subscribe((resp: any) => {
-        this.compraForm.patchValue({
-          enderecoCep: resp.cep,
-          enderecoLogradouro: resp.logradouro,
-          enderecoBarrio: resp.bairro,
-          enderecoUf: resp.uf,
-          enderecoLocalidade: resp.localidade,
-        });
+        if(resp.localidade !== 'Anápolis'){
+          Swal.fire({
+            title: "Ainda não chegamos aí!",
+            text:
+              "Desculpe, mas por enquanto só estamos fazendo entregas na cidade de Anápolis. Mas fique ligado, logo logo a Chef Box estará na sua cidade!",
+            type: "info",
+            showConfirmButton: true,
+          });
+        }else{
+          this.compraForm.patchValue({
+            enderecoCep: resp.cep,
+            enderecoLogradouro: resp.logradouro,
+            enderecoBarrio: resp.bairro,
+            enderecoUf: resp.uf,
+            enderecoLocalidade: resp.localidade,
+          });
+        }
       });
   }
   buscarCliente() {
@@ -90,22 +102,23 @@ export class FinalizarCompraModalComponent implements OnInit {
           Swal.fire({
             title: "Compra Realizada!!",
             text:
-              "Obrigado, Sua compra foi realizada! Logo entraremos em contato com você pelo número e e-mail informados. Qualquer dúvida estamos disponíveis através de nosso instagram e do e-mail: chefboxbrasil@gmail.com. Att: Equipe Chef Box.",
+              "Obrigado, Sua compra foi realizada! Logo entraremos em contato com você para realização do pagamento. Qualquer dúvida estamos disponíveis através do whatsapp (62) 9913-8651 e do e-mail: chefboxbrasil@gmail.com. Att: Equipe Chef Box.",
             type: "success",
             showConfirmButton: true,
           });
           this.router.navigateByUrl("/");
+        },(error)=>{
+          Swal.fire({
+            title: "Ocorreu um erro!",
+            text:
+              "Desculpe pelo imprevisto. Estamos em constante evolução para melhor atende-los. Nos informe sobre seu erro através do whatsapp (62) 9913-8651. Obrigado pela compreensão. ",
+            type: "error",
+            showConfirmButton: true,
+          });
         });
     } else {
       this.compraForm.markAllAsTouched();
-      Swal.fire({
-        title: "Ops!!",
-        text:
-          "Ocorreu um erro na sua compra. Estamos trabalhando para concertá-lo. Por favor, tente novamente mais tarde",
-        type: "error",
-        showConfirmButton: false,
-        timer: 2000
-      });
+      this.toastrServi.error("Erro nos dados!")
     }
   }
 }
