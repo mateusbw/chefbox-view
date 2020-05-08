@@ -37,6 +37,14 @@ h1 {
   font-size: 60px;
   font-family: "Leckerli One", cursive;
 }
+@media (max-width: 600px) {
+  h1 {
+    font-size: 48px;
+  }
+  p{
+    font-size: 16px;
+  }
+}
 
 h2,
 h3,
@@ -109,9 +117,10 @@ span {
 
 .banner {
   width: 100%;
-  height: calc(100vh - 66px);
+  min-height: calc(100vh - 66px);
   display: flex;
   align-items: center;
+  padding: 1rem;
   p {
     font-size: 18px;
   }
