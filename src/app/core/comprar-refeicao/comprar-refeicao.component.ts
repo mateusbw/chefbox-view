@@ -44,12 +44,6 @@ export class ComprarRefeicaoComponent implements OnInit {
         dia: this.datePipe.transform(ref.dia, "EEEE", "+0300"),
         qtdPessoas: 2,
         valorTotal: ref.valorBase + ref.valorPessoa * 2,
-        disponivel: !moment(ref.dia)
-          .add(3, "hours")
-          .subtract(1, "day")
-          .endOf("day")
-          .subtract(2, "hours")
-          .isBefore(moment()),
       }));
     });
   }
